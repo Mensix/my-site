@@ -210,15 +210,6 @@ export default {
           iconTitle: true,
         },
         {
-          repoLink: 'https://github.com/Mensix/OpenJBWA',
-          title: 'JBwA',
-          name: 'OpenJBWA',
-          description:
-            'Website with two Facebook usable scripts for learning purposes.',
-          technologies: ['React', 'styled-components', 'Prism'].sort(),
-          iconTitle: false,
-        },
-        {
           repoLink: 'https://github.com/Mensix/my-site',
           title: 'code',
           name: 'my-site',
