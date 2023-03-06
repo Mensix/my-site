@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Bars3BottomLeftIcon, BookOpenIcon, ChevronDownIcon, CircleStackIcon, CubeIcon, LanguageIcon, MagnifyingGlassIcon, SpeakerWaveIcon, UserIcon } from '@heroicons/vue/24/solid'
+import { TrophyIcon } from '@heroicons/vue/20/solid';
+import { AcademicCapIcon, Bars3BottomLeftIcon, BookOpenIcon, BriefcaseIcon, ChevronDownIcon, CircleStackIcon, CubeIcon, LanguageIcon, MagnifyingGlassIcon, SpeakerWaveIcon, UserIcon } from '@heroicons/vue/24/solid';
 
 definePageMeta({
   layout: 'main',
@@ -16,7 +17,7 @@ const projects = [
     icon: MagnifyingGlassIcon,
     link: 'https://dsj24.pl/',
     title: 'DSJ24.PL',
-    subtitle: 'Deluxe Ski Jump 4 venues database. The idea behind it became viral due to the game popularity in Poland. It has been mentioned in many polish medias',
+    subtitle: 'This website is a database of Deluxe Ski Jump 4 custom hills created and maintained by the Gorisek Bros. team. The project has appeared in various polish media outlets thanks for the game popularity in Poland, such as Onet, Przegląd Sportowy, TVP Sport or SportoweFakty. Registered users can upload their hills and share them with others.',
     technologies: ['Vue.js', 'Nuxt.js', 'BootstrapVue'],
   },
   {
@@ -60,11 +61,34 @@ const projects = [
     technologies: ['Vitepress', 'Markdown'],
   },
   {
+    icon: TrophyIcon,
+    githubLink: 'https://github.com/Mensix/dsj2tournaments',
+    title: 'DSJ2 Tournaments',
+    subtitle: 'Deluxe Ski Jump 2 tournament creator, which allows to create and manage tournaments in-game directly from Discord.',
+    technologies: ['Node.js', 'TypeScript', 'ASP.NET', 'PostgreSQL'],
+  },
+  {
     icon: UserIcon,
     githubLink: 'https://github.com/Mensix/my-site',
     title: 'my-site',
     subtitle: 'The site, which you are currently on :)',
     technologies: ['Vue', 'Nuxt.js', 'Tailwind'],
+  },
+]
+
+const timelines = [
+  {
+    date: '19 July 2022 - ',
+    title: 'Frontend Developer, mTap Smart City',
+    description:
+      'Maintenance and development of mTap Data Platform, web application written in Vue used to remotely manage lighting.',
+    icon: BriefcaseIcon,
+  },
+  {
+    date: '1 October 2021 - ',
+    title: 'B. Eng. in Computer Science, Warsaw University of Life Sciences',
+    description: 'Currently in the second year of studies.',
+    icon: AcademicCapIcon,
   },
 ]
 </script>
@@ -120,12 +144,20 @@ const projects = [
     <section class="flex flex-col justify-center">
       <heading>My projects</heading>
       <div class="grid w-full grid-cols-1 gap-y-4 md:auto-rows-fr md:grid-cols-2 md:gap-x-2">
-        <project-card v-for="project in projects" :key="project.link" :link="project.link" :github-link="project.githubLink" :title="project.title" :technologies="project.technologies" :subtitle="project.subtitle">
+        <ProjectCard v-for="project in projects" :key="project.link" :link="project.link" :github-link="project.githubLink" :title="project.title" :technologies="project.technologies" :subtitle="project.subtitle">
           <template #icon>
             <component :is="project.icon" class="h-8 w-8 text-white" />
           </template>
-        </project-card>
+        </ProjectCard>
       </div>
+    </section>
+    <section class="flex flex-col justify-center">
+      <heading>Timeline</heading>
+      <timeline v-for="(item, index) in timelines" :key="item.title" class="mb-4" :date="item.date" :title="item.title" :description="item.description" :reverse="index % 2 === 1">
+        <template #icon>
+          <component :is="item.icon" class="h-8 w-8 text-white" />
+        </template>
+      </timeline>
     </section>
   </div>
 </template>
